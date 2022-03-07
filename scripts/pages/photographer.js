@@ -78,7 +78,7 @@ fetch("../../data/photographers.json")
 
   // Appel du parent
 
-  const galerie = document.getElementsByClassName('galerie');
+  const galerie = document.getElementById('galerie');
 
 
   fetch("../../data/photographers.json")
@@ -104,11 +104,13 @@ fetch("../../data/photographers.json")
               galeriePictureModel.appendChild(galeriePictureModelVideo);
               galeriePictureModelVideo.appendChild(galeriePictureModelVideoSrc);  
 
-              const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
-              const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
+              const photoLegendTitle = document.createElement('p');  
+              const photoLegendNumber = document.createElement'p');
 
-              photoLegendTitle[0].textContent = data.media[index].title;
-              photoLegendNumber[0].textContent = data.media[index].likes;
+              photoLegendTitle.innerHTML = data.media[index].title;
+              photoLegendNumber.innerHTML = data.media[index].likes;
+              galerie.appendChild(photoLegendTitle);
+              galerie.appendChild(photoLegendNumber);
 
             }
 
