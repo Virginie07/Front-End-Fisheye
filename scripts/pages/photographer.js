@@ -22,7 +22,7 @@ const nameModale = document.getElementsByClassName('name_modale');
 
 
 
-fetch("../../Front-End-Fisheye/data/photographers.json")
+fetch("../../data/photographers.json")
 // fetch("../data/photographers.json")
   .then((res) => res.json())
   .then((data) => {
