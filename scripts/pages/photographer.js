@@ -21,7 +21,9 @@ const photographerImg = document.createElement('img');
 const nameModale = document.getElementsByClassName('name_modale');
 
 
-fetch("../../data/photographers.json")
+
+fetch("../../Front-End-Fisheye/data/photographers.json")
+// fetch("../data/photographers.json")
   .then((res) => res.json())
   .then((data) => {
 
