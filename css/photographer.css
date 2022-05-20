@@ -10,6 +10,22 @@ body {
   margin: 2rem 3.5rem 2rem 3.5rem;
 }
 
+a:focus {
+  outline: 3px solid black;
+}
+
+button:focus {
+  outline: 3px solid black;
+}
+
+input:focus {
+  outline: 3px solid black;
+}
+
+textarea:focus {
+  outline: 3px solid black;
+}
+
 .logo {
   width: 14rem;
 }
@@ -70,6 +86,8 @@ body {
 }
 .tri__txt {
   font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
 }
 .tri__btn {
   display: flex;
@@ -86,6 +104,7 @@ body {
   margin-left: 1rem;
   border-radius: 5px;
   border-top: none;
+  border: solid 2px #FAFAFA;
   cursor: pointer;
 }
 .tri__btn--menu:hover {
@@ -95,6 +114,15 @@ body {
 .tri__btn--lien {
   color: white;
   text-decoration: none;
+  padding-right: 0.8rem;
+}
+
+.menuDate {
+  display: none;
+}
+
+.menuTitre {
+  display: none;
 }
 
 .fa-chevron-down {
@@ -234,8 +262,8 @@ textarea {
 .txtError {
   display: none;
   background: #901C1C;
-  color: black;
-  font-weight: bold;
+  color: white;
+  font-size: 1rem;
 }
 
 #success {

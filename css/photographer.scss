@@ -16,12 +16,28 @@ body{
     margin: 2rem 3.5rem 2rem 3.5rem;
 }
 
+a:focus{
+    outline: 3px solid black;
+}
+
+button:focus{
+    outline: 3px solid black;
+}
+
+input:focus{
+    outline: 3px solid black;
+}
+
+textarea:focus{
+    outline: 3px solid black;
+}
+
+
 // HEAD...............................................
 
 .logo{
     width: 14rem;
 }
-
 
 
 // MAIN...............................................
@@ -101,6 +117,8 @@ body{
 
     &__txt{
         font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
     }
 
     &__btn{
@@ -120,6 +138,7 @@ body{
             margin-left: 1rem;
             border-radius: 5px;
             border-top: none;
+            border: solid 2px #FAFAFA;
             cursor: pointer;
             }
 
@@ -131,15 +150,18 @@ body{
         &--lien{
             color: white;
             text-decoration: none;
+            padding-right: 0.8rem;
         }      
     }
 }
 
-// #tri__btn--back{
-//     display: flex;
-//     flex-direction: column;
-//     display: none;
-// }
+.menuDate{
+    display: none;
+}
+
+.menuTitre{
+    display: none;
+}
 
 .fa-chevron-down{
     color: #FAFAFA;
@@ -328,8 +350,8 @@ textarea{
 .txtError{
     display: none;
     background: $colour-primary;
-    color: black;
-    font-weight: bold;
+    color: white;
+    font-size: 1rem;
 }
 
 #success{
@@ -346,7 +368,7 @@ textarea{
 
 }
 
-// ...................................................
+
 
 // Modale Galerie.....................................
 
