@@ -20,18 +20,20 @@
 
 <body>
 
-<!-- HEAD................................................. -->
+  <!-- Head...................................................... -->
+  
+  <header>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
+  </header>
 
-<header>
-  <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
-</header>
+  <!-- .......................................................... -->
 
-<!-- ..................................................... -->
+  
+  <!-- Main...................................................... -->
 
+  <main id="main">
 
-<main id="main">
-
-    <!-- Partie présentation du photographe -->
+    <!-- PRESENTATION DU PHOTOGRAPHE -->
 
     <div class="presentation">
 
@@ -51,38 +53,27 @@
 
 
 
-    <!-- Partie bouton de tri -->
+    <!-- BOUTON DE TRI -->
 
     <div class="tri">
 
       <a href="#" class="tri__txt">Trier par</a>
 
-        <nav class="tri__btn" role="navigation" aria-label="menu de tri des photos">
+      <nav class="tri__btn" role="navigation" aria-label="menu de tri des photos">
 
-          <span class="tri__btn--menu btn_tri menuPop"><a href="#" class="tri__btn--lien" aria-label="tri par popularité">Popularité</a><i class="fas fa-solid fa-chevron-down"></i></span>
+        <span class="tri__btn--menu btn_tri menuPop"><a href="#" class="tri__btn--lien" aria-label="tri par popularité">Popularité</a><i class="fas fa-solid fa-chevron-down"></i></span>
 
-          <!-- <div class="tri__btn--back">
-            <span class="tri__btn--menu menuDate"><a href="#" class="tri__btn--lien">Date</a></span>
-            <span class="tri__btn--menu menuTitre"><a href="#" class="tri__btn--lien">Titre</a></span>
-          </div> -->
+        <span class="tri__btn--menu menuDate"><a href="#" class="tri__btn--lien" aria-label="tri par date">Date</a></span>
 
-          <span class="tri__btn--menu menuDate"><a href="#" class="tri__btn--lien" aria-label="tri par date">Date</a></span>
-          <span class="tri__btn--menu menuTitre"><a href="#" class="tri__btn--lien" aria-label="tri par titre">Titre</a></span>
+        <span class="tri__btn--menu menuTitre"><a href="#" class="tri__btn--lien" aria-label="tri par titre">Titre</a></span>
 
-          <!-- <button class="tri__btn--menu btn_tri menuPop"><a href="#" class="tri__btn--lien">Popularité</a><i class="fas fa-solid fa-chevron-down"></i></button>
-
-          <div class="tri__btn--back">
-            <button class="tri__btn--menu menuDate"><a href="#" class="tri__btn--lien">Date</a></button>
-            <button class="tri__btn--menu menuTitre"><a href="#" class="tri__btn--lien">Titre</a></button>
-          </div> -->
-
-        </nav>      
+      </nav>      
       
     </div>
 
 
 
-    <!-- Partie galerie photos -->
+    <!-- GALERIE PHOTO -->
 
 
     <div id="galerie">
@@ -91,7 +82,7 @@
 
         <div class="galerie__picture--modele">
 
-          img = galerie__picture--modeleImg
+          <img src="" alt="" class="galerie__picture--modeleImg">
           
         </div>
 
@@ -107,121 +98,130 @@
         </div>
       
       </div> -->
-      
-
+ 
     </div>
 
-</main>
+  </main>
 
-<!-- ..................................................... -->
+  <!-- .......................................................... -->
 
 
-<!-- MODALE............................................... -->
 
-<aside id="contact_modal" aria-label="Formulaire de contact">
+
+
+  <!-- MODALE FORMULAIRE......................................... -->
+
+  <aside id="contact_modal" aria-label="Formulaire de contact">
   
-  <div class="modal">
+    <div class="modal">
 
-    <header class="modal__entete" aria-label="En-tete du formulaire">
+      <header class="modal__entete" aria-label="En-tete du formulaire">
 
-      <div class="modal__entete--text">
-        <p>Contactez-moi</p>
-        <p class="name_modale">Mimi Keel</p>
+        <div class="modal__entete--text">
+          <p>Contactez-moi</p>
+          <p class="name_modale">Mimi Keel</p>
+        </div>
+    
+        <img aria-label= "fermer" src="assets/icons/close.svg" id="fermeture" class="modal__entete--icone" alt="icone de fermeture" tabindex="0"/>
+
+      </header>		
+     
+      <form class="modal__formulaire">
+
+			  <div class="modal__formulaire--item">
+				  <label for="prenom">Prénom</label>
+          <input type="text" id="prenom">	
+          <!-- <label>Prénom <input type="text" id="prenom"> </label> -->
+			  </div>
+
+        <p class="txtError" id="firstValid">Le format du prénom doit être valide.</p>
+
+        <div class="modal__formulaire--item">
+				  <label for="nom">Nom</label>
+          <input type="text" id="nom">	
+			  </div>
+
+        <p class="txtError" id="lastValid">Le format du nom doit être valide.</p>
+
+        <div class="modal__formulaire--item">
+				  <label for="email">Email</label>
+          <input type="email" id="email">	
+			  </div>
+
+        <p class="txtError" id="mailValid">Le format de l'adresse electronique doit être valide.</p>
+
+        <div class="modal__formulaire--item">
+				  <label for="message">Votre message</label>
+          <textarea id="message" cols="30" rows="10"></textarea>
+			  </div>
+
+        <p class="txtError" id="messageValid">Le message doit contenir au moins 2 caractères.</p>
+
+        <input class="modal__formulaire--bouton" type="submit" value="Envoyer">
+
+		  </form>
+
+	  </div>
+		
+  </aside>
+
+  <p class="valid" id="success">Merci, votre formulaire a été envoyé</p>
+
+  <!-- .......................................................... -->
+
+
+  <!-- MODALE GALERIE DEFILEMENT................................. -->
+
+  <aside id="modalGalerie" aria-label="Galerie photos">
+
+    <div class="modalGalerie__fleche">
+
+      <img tabindex="0" aria-label= "fermer" src="assets/icons/fermer.png" class="modalGalerie__iconeClose" id="fermetureGalerie" alt="icone de fermeture"/>
+
+      <i class=" fas fa-solid fa-chevron-left modalGalerie__fleche--iconeLeft modalGalerie__fleche--icone"></i>
+      
+      <div class="modalGalerie__defilement">
+        <!-- <img src="" alt="" class="modalGalerie__defilement--big"> -->
+        <!-- <video src="" class="modalGalerie__defilement--bigvideo"></video> -->
       </div>
 
-      <img aria-label= "fermer" src="assets/icons/close.svg" id="fermeture" class="modal__entete--icone" alt="icone de fermeture" tabindex="1"/>
+      <i class="fas fa-solid fa-chevron-right modalGalerie__fleche--iconeRight modalGalerie__fleche--icone"></i>
 
-    </header>		
-     
-    <form class="modal__formulaire">
-
-			<div class="modal__formulaire--item">
-				<label for="prenom">Prénom</label>
-        <input type="text" id="prenom">	
-        <!-- <label>Prénom <input type="text" id="prenom"> </label> -->
-			</div>
-
-      <p class="txtError" id="firstValid">Le format du prénom doit être valide.</p>
-
-      <div class="modal__formulaire--item">
-				<label for="nom">Nom</label>
-        <input type="text" id="nom">	
-			</div>
-
-      <p class="txtError" id="lastValid">Le format du nom doit être valide.</p>
-
-      <div class="modal__formulaire--item">
-				<label for="email">Email</label>
-        <input type="email" id="email">	
-			</div>
-
-      <p class="txtError" id="mailValid">Le format de l'adresse electronique doit être valide.</p>
-
-      <div class="modal__formulaire--item">
-				<label for="message">Votre message</label>
-        <textarea id="message" cols="30" rows="10"></textarea>
-			</div>
-
-      <p class="txtError" id="messageValid">Le message doit contenir au moins 2 caractères.</p>
-
-      <input class="modal__formulaire--bouton" type="submit" value="Envoyer">
-
-		</form>
-
-	</div>
-		
-</aside>
-
-<p class="valid" id="success">Merci, votre formulaire a été envoyé</p>
-
-<!-- ........................................................ -->
-
-<!-- Partie Encart bas de page -->
-
-<div class="encart">
-
-  <div class="encart__total">
-    <p class="encart__total--chiffre"></p>
-    <i class="fas fa-heart"></i>
-  </div>
-  <p class="encart__tarif"></p>
-
-</div>
-
-<!-- ............................. -->
-
-
-<!-- Modale Galerie.............................................. -->
-
-<aside id="modalGalerie" aria-label="Galerie photos">
-
-  <!-- <img src="assets/icons/close.svg" class="modalGalerie__defilement--iconeClose"/> --> 
-
-  <div class="modalGalerie__fleche">
-
-    <img aria-label= "fermer" src="assets/icons/fermer.png" class="modalGalerie__iconeClose" alt="icone de fermeture"/>
-
-    <i class=" fas fa-solid fa-chevron-left modalGalerie__fleche--iconeLeft modalGalerie__fleche--icone"></i>
-      
-    <div class="modalGalerie__defilement">
-      <!-- <img src="" alt="" class="modalGalerie__defilement--big"> -->
-      <!-- <video src="" class="modalGalerie__defilement--bigvideo"></video> -->
     </div>
 
-    <i class="fas fa-solid fa-chevron-right modalGalerie__fleche--iconeRight modalGalerie__fleche--icone"></i>
+  </aside>
 
-  </div>
-
-</aside>
-
-<!-- .............................. -->
+  <!-- .......................................................... -->
 
 
-<script src="scripts/pages/modale.js"></script>
 
-<!-- <script src="/scripts/utils/contactForm.js"></script> -->
 
-<script src="scripts/pages/photographer.js"></script>
+  <!-- Footer.................................................... -->
+
+  <footer>
+
+    <div class="encart">
+
+      <div class="encart__total">
+        <p class="encart__total--chiffre"></p>
+        <i class="fas fa-heart"></i>
+      </div>
+
+      <p class="encart__tarif"></p>
+
+    </div>
+
+  </footer>
+
+  <!-- .......................................................... -->
+
+
+  <script src="scripts/pages/modale.js"></script>
+
+  <!-- <script src="/scripts/utils/contactForm.js"></script> -->
+
+  <script src="scripts/pages/photographer.js"></script>
+
 </body>
 
 </html>

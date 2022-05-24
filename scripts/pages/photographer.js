@@ -70,7 +70,6 @@ submitBtn.addEventListener("click", validate);
 function modalOpen(){
   modal.style.display = "block";
   document.getElementById('prenom').focus();
-  // document.getElementById('fermeture').focus();
 }
   
 // Fonction pour fermer la modale
@@ -419,6 +418,8 @@ fetch("../../data/photographers.json")
       
       imgTag.addEventListener('click', (event) => {
         event.preventDefault();
+        
+        
         modalGalerie.style.display = 'block';
         const big = document.createElement('img');
         big.setAttribute('class', 'modalGalerie__defilement--big');
@@ -442,7 +443,8 @@ fetch("../../data/photographers.json")
           let srcMedia = imgTag.getAttribute('src');
           tabImg.push(srcMedia + "..." + mediaCheck);  
           let srcEnd = srcMedia.split('...')[0];
-          modalImg[0].setAttribute('src', srcEnd);  
+          modalImg[0].setAttribute('src', srcEnd); 
+          document.getElementById('fermetureGalerie').focus(); 
         }
   
         if(mediaCheck == 'video'){
@@ -451,7 +453,8 @@ fetch("../../data/photographers.json")
           let srcMedia = imgTag.getAttribute('video');
           tabImg.push(srcMedia + "..." + mediaCheck);
           let srcEnd = srcMedia.split('...')[0];
-          modalVideo[0].setAttribute('src', srcEnd);    
+          modalVideo[0].setAttribute('src', srcEnd);   
+          document.getElementById('fermetureGalerie').focus(); 
         }
   
 
@@ -475,67 +478,6 @@ fetch("../../data/photographers.json")
         });  
           
       });
-
-
-      // imgTag.addEventListener('focus', (event) => {
-      //   event.preventDefault();
-      //   modalGalerie.style.display = 'block';
-      //   const big = document.createElement('img');
-      //   big.setAttribute('class', 'modalGalerie__defilement--big');
-      //   modalGalerieDefilement[0].innerHTML = '';   
-      //   modalGalerieDefilement[0].appendChild(big);
-      //   modalGalerie.appendChild(modalGalerieDefilement[0]); 
-
-      //   const bigvideo = document.createElement('video');
-      //   bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');
-      //   bigvideo.setAttribute('role','button');
-      //   bigvideo.setAttribute('controls','controls');
-      //   modalGalerieDefilement[0].appendChild(bigvideo);
-      //   modalGalerie.appendChild(modalGalerieDefilement[0]);                 
-            
-      //   tabImg = [];
-      //   let mediaCheck = imgTag.getAttribute('media');
-  
-      //   if(mediaCheck == 'image'){
-      //     modalVideo[0].style.display = 'none';
-      //     modalImg[0].style.display = 'block';
-      //     let srcMedia = imgTag.getAttribute('src');
-      //     tabImg.push(srcMedia + "..." + mediaCheck);  
-      //     let srcEnd = srcMedia.split('...')[0];
-      //     modalImg[0].setAttribute('src', srcEnd);  
-      //   }
-  
-      //   if(mediaCheck == 'video'){
-      //     modalImg[0].style.display = 'none';
-      //     modalVideo[0].style.display = 'block';
-      //     let srcMedia = imgTag.getAttribute('video');
-      //     tabImg.push(srcMedia + "..." + mediaCheck);
-      //     let srcEnd = srcMedia.split('...')[0];
-      //     modalVideo[0].setAttribute('src', srcEnd);    
-      //   }
-  
-
-      //   imgTags.forEach(function (item){
-      //     let mediaCheckItem = item.getAttribute('media');
-      //     let srcMediaItemImage = item.getAttribute('src');
-      //     let srcMediaItemVideo = item.getAttribute('video');
-  
-      //     if(imgTag.getAttribute('src') != item.getAttribute('src')){
-  
-      //       if(mediaCheckItem == 'image'){
-      //         tabImg.push(srcMediaItemImage + "..." + mediaCheckItem);    
-      //       }
-      
-      //       if(mediaCheckItem == 'video'){
-      //         tabImg.push(srcMediaItemVideo + "..." + mediaCheckItem);    
-      //       }
-         
-      //     }
-
-      //   });  
-          
-      // });
-
 
     }); 
   
@@ -645,29 +587,7 @@ const lienTri = document.querySelector(".tri__txt");
 const divTri = document.querySelector(".tri__btn");
 const itemTris = document.querySelectorAll('.tri__btn--menu');
 
-// itemTris.forEach(function (itemTri){
-//   itemTri.addEventListener('click', (event) => {
-
-//   });
-// });
-
 lienTri.addEventListener("click", menuTriOpen);
-
-// itemTris.forEach(function (itemTri){
-
-//   itemTri.addEventListener('click', (event) => {
-
-//     itemTris.forEach(function (itemTri2){
-//       itemTri2.style.display = 'none';
-//       itemTri2.remove('active');
-//     });
-
-//     itemTri.style.display = 'block';
-//     itemTri.add('active');
-
-//   });
-
-// });
 
   // lienTri.addEventListener("click", menuTriClose);
 
@@ -683,15 +603,7 @@ lienTri.addEventListener("click", menuTriOpen);
 
 function menuTriOpen(){
   lienDate[0].style.display = "block";
-  lienAlpha[0].style.display = "block";
-
-
-  // let checkVisibility = 0;
-
-  // itemTris.forEach(function (itemTri2){
-  //   itemTri2.style.display = 'block'; 
-  // });    
-  
+  lienAlpha[0].style.display = "block";  
 }
 
 function menuTriClose(){

@@ -16,19 +16,19 @@ body{
     margin: 2rem 3.5rem 2rem 3.5rem;
 }
 
-a:focus{
+a:focus-visible{
     outline: 3px solid black;
 }
 
-button:focus{
+button:focus-visible{
     outline: 3px solid black;
 }
 
-input:focus{
+input:focus-visible{
     outline: 3px solid black;
 }
 
-textarea:focus{
+textarea:focus-visible{
     outline: 3px solid black;
 }
 
