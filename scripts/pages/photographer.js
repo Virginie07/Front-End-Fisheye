@@ -69,6 +69,8 @@ submitBtn.addEventListener("click", validate);
 // Fonction pour ouvrir la modale
 function modalOpen(){
   modal.style.display = "block";
+  document.getElementById('prenom').focus();
+  // document.getElementById('fermeture').focus();
 }
   
 // Fonction pour fermer la modale
@@ -184,23 +186,27 @@ fetch("../../data/photographers.json")
           galeriePictureModel.setAttribute('class','galerie__picture--modele');
           galeriePicture.appendChild(galeriePictureModel);
 
-          const liengaleriePictureModelImg = document.createElement('a');
-          liengaleriePictureModelImg.setAttribute('class', 'lienImage');
-          liengaleriePictureModelImg.setAttribute('href', '#');
-          galeriePictureModel.appendChild(liengaleriePictureModelImg);
+          // const liengaleriePictureModelImg = document.createElement('a');
+          // liengaleriePictureModelImg.setAttribute('class', 'lienImage');
+          // liengaleriePictureModelImg.setAttribute('href', '#');
+          // liengaleriePictureModelImg.setAttribute('', data.media[index].title);
+          // galeriePictureModel.appendChild(liengaleriePictureModelImg);
 
           const galeriePictureModelImg = document.createElement('img');
           galeriePictureModelImg.setAttribute('media','video');
           galeriePictureModelImg.setAttribute('src',`./assets/images/miniature_video.jpg`);
           galeriePictureModelImg.setAttribute('video',`./assets/images/${product_name}/${data.media[index].video}`);
+          galeriePictureModelImg.setAttribute('tabindex', '0');
+          galeriePictureModelImg.setAttribute('role', 'button');
+          galeriePictureModelImg.setAttribute('aria-expanded', 'true');
+          galeriePictureModelImg.setAttribute('alt', data.media[index].title);
           galeriePictureModelImg.dataset.id = data.media[index].video;
           galeriePictureModelImg.setAttribute('class','galerie__picture--modeleImg');
-          liengaleriePictureModelImg.appendChild(galeriePictureModelImg);
+          galeriePictureModel.appendChild(galeriePictureModelImg);
 
           const photoLegend = document.createElement('div');
           photoLegend.setAttribute('class', 'galerie__picture--legend');
           galeriePicture.appendChild(photoLegend);
-
 
           const photoLegendTitle = document.createElement('p');
           photoLegendTitle.innerHTML = data.media[index].title;
@@ -213,10 +219,15 @@ fetch("../../data/photographers.json")
           const photoLegendNumber = document.createElement('p');
           photoLegendNumber.setAttribute('class', 'galerie__picture--number');            
           photoLegendNumber.innerHTML = data.media[index].likes;
+          photoLegendNumber.setAttribute('likes', 0);  
           photoLegendLikes.appendChild(photoLegendNumber);
 
           const photoLegendIcone = document.createElement('i');
           photoLegendIcone.setAttribute('class', 'fas fa-heart heart');
+          photoLegendIcone.setAttribute('tabindex', '0');
+          photoLegendIcone.setAttribute('role', 'button');
+          photoLegendIcone.setAttribute('aria-expanded', 'true');
+          photoLegendIcone.setAttribute('alt', 'bouton likes');
           photoLegendLikes.appendChild(photoLegendIcone);            
 
         }
@@ -230,23 +241,26 @@ fetch("../../data/photographers.json")
           galeriePictureModel.setAttribute('class','galerie__picture--modele');
           galeriePicture.appendChild(galeriePictureModel);
 
-          const liengaleriePictureModelImg = document.createElement('a');
-          liengaleriePictureModelImg.setAttribute('class', 'lienImage');
-          liengaleriePictureModelImg.setAttribute('href', '#');
-          galeriePictureModel.appendChild(liengaleriePictureModelImg);
+          // const liengaleriePictureModelImg = document.createElement('a');
+          // liengaleriePictureModelImg.setAttribute('class', 'lienImage');
+          // liengaleriePictureModelImg.setAttribute('href', '#');
+          // liengaleriePictureModelImg.setAttribute('aria-labelledby', data.media[index].title);
+          // galeriePictureModel.appendChild(liengaleriePictureModelImg);
   
           const galeriePictureModelImg = document.createElement('img');
           galeriePictureModelImg.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
           galeriePictureModelImg.setAttribute('media','image');
+          galeriePictureModelImg.setAttribute('tabindex', '0');
+          galeriePictureModelImg.setAttribute('role', 'button');
+          galeriePictureModelImg.setAttribute('aria-expanded', 'true');
+          galeriePictureModelImg.setAttribute('alt', data.media[index].title);
           galeriePictureModelImg.dataset.id = data.media[index].image;
           galeriePictureModelImg.setAttribute('class','galerie__picture--modeleImg');
           galeriePictureModel.appendChild(galeriePictureModelImg);
-          liengaleriePictureModelImg.appendChild(galeriePictureModelImg);
-
+          
           const photoLegend = document.createElement('div');
           photoLegend.setAttribute('class', 'galerie__picture--legend');
           galeriePicture.appendChild(photoLegend);
-
 
           const photoLegendTitle = document.createElement('p');
           photoLegendTitle.innerHTML = data.media[index].title;
@@ -264,6 +278,10 @@ fetch("../../data/photographers.json")
 
           const photoLegendIcone = document.createElement('i');
           photoLegendIcone.setAttribute('class', 'fas fa-heart heart');
+          photoLegendIcone.setAttribute('tabindex', '0');
+          photoLegendIcone.setAttribute('role', 'button');
+          photoLegendIcone.setAttribute('aria-expanded', 'true');
+          photoLegendIcone.setAttribute('alt', 'bouton likes');
           photoLegendLikes.appendChild(photoLegendIcone);            
         }
      
@@ -281,6 +299,8 @@ fetch("../../data/photographers.json")
     affichagePhotos('TriDate');
     defilementGalerie();
     incrementationLikes();
+    menuTriClose();
+
   }
   const menuDate = document.querySelector('.menuDate');
   menuDate.addEventListener('click', affichagePhotoDate);
@@ -290,6 +310,7 @@ fetch("../../data/photographers.json")
     affichagePhotos('TriName');
     defilementGalerie();
     incrementationLikes();
+    menuTriClose();
   }
   const menuTitre = document.querySelector('.menuTitre');
   menuTitre.addEventListener('click', affichagePhotoTitre);
@@ -299,6 +320,7 @@ fetch("../../data/photographers.json")
     affichagePhotos('TriLikes');
     defilementGalerie();
     incrementationLikes();
+    menuTriClose();
   }
   const menuLikes = document.querySelector('.menuPop');
   menuLikes.addEventListener('click',  affichagePhotoLikes);
@@ -454,6 +476,67 @@ fetch("../../data/photographers.json")
           
       });
 
+
+      // imgTag.addEventListener('focus', (event) => {
+      //   event.preventDefault();
+      //   modalGalerie.style.display = 'block';
+      //   const big = document.createElement('img');
+      //   big.setAttribute('class', 'modalGalerie__defilement--big');
+      //   modalGalerieDefilement[0].innerHTML = '';   
+      //   modalGalerieDefilement[0].appendChild(big);
+      //   modalGalerie.appendChild(modalGalerieDefilement[0]); 
+
+      //   const bigvideo = document.createElement('video');
+      //   bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');
+      //   bigvideo.setAttribute('role','button');
+      //   bigvideo.setAttribute('controls','controls');
+      //   modalGalerieDefilement[0].appendChild(bigvideo);
+      //   modalGalerie.appendChild(modalGalerieDefilement[0]);                 
+            
+      //   tabImg = [];
+      //   let mediaCheck = imgTag.getAttribute('media');
+  
+      //   if(mediaCheck == 'image'){
+      //     modalVideo[0].style.display = 'none';
+      //     modalImg[0].style.display = 'block';
+      //     let srcMedia = imgTag.getAttribute('src');
+      //     tabImg.push(srcMedia + "..." + mediaCheck);  
+      //     let srcEnd = srcMedia.split('...')[0];
+      //     modalImg[0].setAttribute('src', srcEnd);  
+      //   }
+  
+      //   if(mediaCheck == 'video'){
+      //     modalImg[0].style.display = 'none';
+      //     modalVideo[0].style.display = 'block';
+      //     let srcMedia = imgTag.getAttribute('video');
+      //     tabImg.push(srcMedia + "..." + mediaCheck);
+      //     let srcEnd = srcMedia.split('...')[0];
+      //     modalVideo[0].setAttribute('src', srcEnd);    
+      //   }
+  
+
+      //   imgTags.forEach(function (item){
+      //     let mediaCheckItem = item.getAttribute('media');
+      //     let srcMediaItemImage = item.getAttribute('src');
+      //     let srcMediaItemVideo = item.getAttribute('video');
+  
+      //     if(imgTag.getAttribute('src') != item.getAttribute('src')){
+  
+      //       if(mediaCheckItem == 'image'){
+      //         tabImg.push(srcMediaItemImage + "..." + mediaCheckItem);    
+      //       }
+      
+      //       if(mediaCheckItem == 'video'){
+      //         tabImg.push(srcMediaItemVideo + "..." + mediaCheckItem);    
+      //       }
+         
+      //     }
+
+      //   });  
+          
+      // });
+
+
     }); 
   
   
@@ -560,8 +643,31 @@ const lienDate = document.getElementsByClassName('menuDate');
 const lienAlpha = document.getElementsByClassName('menuTitre');
 const lienTri = document.querySelector(".tri__txt");
 const divTri = document.querySelector(".tri__btn");
+const itemTris = document.querySelectorAll('.tri__btn--menu');
+
+// itemTris.forEach(function (itemTri){
+//   itemTri.addEventListener('click', (event) => {
+
+//   });
+// });
 
 lienTri.addEventListener("click", menuTriOpen);
+
+// itemTris.forEach(function (itemTri){
+
+//   itemTri.addEventListener('click', (event) => {
+
+//     itemTris.forEach(function (itemTri2){
+//       itemTri2.style.display = 'none';
+//       itemTri2.remove('active');
+//     });
+
+//     itemTri.style.display = 'block';
+//     itemTri.add('active');
+
+//   });
+
+// });
 
   // lienTri.addEventListener("click", menuTriClose);
 
@@ -576,16 +682,45 @@ lienTri.addEventListener("click", menuTriOpen);
 // Fonction pour ouvrir le menu de tri...........................
 
 function menuTriOpen(){
-    // menuTri[0].style.display = "block";
-    // menuTri[0].style.display = "flex";
-    // menuTri[0].style.flexDirection = "column";
-    lienDate[0].style.display = "block";
-    lienAlpha[0].style.display = "block";
+  lienDate[0].style.display = "block";
+  lienAlpha[0].style.display = "block";
+
+
+  // let checkVisibility = 0;
+
+  // itemTris.forEach(function (itemTri2){
+  //   itemTri2.style.display = 'block'; 
+  // });    
+  
 }
 
 function menuTriClose(){
-   menuTri[0].style.display = "none";
+  lienDate[0].style.display = "none";
+  lienAlpha[0].style.display = "none";
+ }
+
+
+ const flecheGauche = document.querySelector('.modalGalerie__fleche--iconeLeft');
+ const flecheDroite = document.querySelector('.modalGalerie__fleche--iconeRight');
+ 
+ 
+ document.body.onkeyup = function(e){
+  if(e.keyCode == 32 || e.keyCode == 13){
+    document.activeElement.click();
+    console.log(document.activeElement);
+  }
+
+  if(e.keyCode == 37){
+    flecheGauche.click();
+    console.log('gauche');
+  }
+
+  if(e.keyCode == 39){
+    flecheDroite.click();
+    console.log('droite');
+  }
 }
+
 
 
 
