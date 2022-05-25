@@ -1,5 +1,5 @@
 async function getPhotographers() {
-	// Penser à remplacer par les données récupérées dans le json
+	
 	const photographers = [
 		{
 			name: 'Mimi Keel',
@@ -56,20 +56,23 @@ async function getPhotographers() {
 			portrait: 'MarcelNikolic.jpg',
 		},
 	];
-	// et bien retourner le tableau photographers seulement une fois
+	
 	return {
 		photographers: [...photographers],
 	};
 }
 
 
+
+// STRUCTURE DES PROFILS......................................
+
 function photographerFactory(photographer){
 
-	// Appel de la section parent.............................
+	// Appel de la section parent
 
 	let photographersContainer = document.getElementsByClassName('photographer_section');
 
-	// Création de la structure profil........................
+	// Création de la structure profil
 
 	var containerChild = document.createElement('div');
 	containerChild.setAttribute('class', 'profil');
@@ -79,8 +82,7 @@ function photographerFactory(photographer){
 
 	var containerChildIconeLink = document.createElement('a');
 	containerChildIconeLink.setAttribute('href', `photographer.html?id=${photographer.id}&name=${photographer.name}`);
-	// containerChildIconeLink.setAttribute('href', './photographer.html');
-
+	
 	var containerChildIconeImg = document.createElement('img');
 	containerChildIconeImg.setAttribute('src', `./assets/images/${photographer.portrait}`);
 	containerChildIconeImg.setAttribute('class', 'profil__icone--img');
@@ -106,14 +108,7 @@ function photographerFactory(photographer){
 	containerChildTextPrix.textContent = photographer.price +'€/jour';
 
 
-	// photographersContainer.forEach(element => {
-	// 	element.appendChild(containerChild);
-	// });
-
-	// photographersContainer.appendChild(containerChild);
-
-
-	// Appendchild............................................
+	// Appendchild
 
 	containerChild.appendChild(containerChildIcone);
 	containerChildIcone.appendChild(containerChildIconeLink);
@@ -127,119 +122,34 @@ function photographerFactory(photographer){
 
 	photographersContainer[0].appendChild(containerChild);
 
-	// Appel du contenant "profil"...............................
+	// Appel du contenant "profil"
 
 	return containerChild;
 	
 }
 
+
+// INTEGRATION DES PROFILS.........................
+
 async function displayData(photographers) {
-		const photographersSection = document.querySelector('.photographer_section');
+
+	const photographersSection = document.querySelector('.photographer_section');
 	
-		photographers.forEach((photographer) => {
-			const photographerModel = photographerFactory(photographer);
-			// const userCardDOM = photographerModel.getUserCardDOM();
-			photographersSection.appendChild(photographerModel);
-		});
+	photographers.forEach((photographer) => {
+		const photographerModel = photographerFactory(photographer);
+		photographersSection.appendChild(photographerModel);
+	});
 }
 
+
+
+
+// RECUPERATION DATAS PHOTOGRAPHES..................
+
 async function init(){
-	// Récupère les datas des photographes
 	const { photographers } = await getPhotographers();
 	displayData(photographers);
 }
 
+
 init();
-
-
-
-
-
-
-
-// Fonction Exemple.................................................
-
-// function photographerFactory(photographer) {
-
-// 	var container = document.createElement('div');
-// 	container.style.border = '1px solid';
-// 	container.style.width = 'auto';
-
-// 	var nameOfPhotograph = document.createElement('h1');
-//  nameOfPhotograph.innerHTML = photographer.name;
-
-// 	var picture = document.createElement('img');
-// 	picture.src = `./assets/images/${photographer.portrait}`;
-// 	picture.setAttribute('width', '200px');
-// 	picture.setAttribute('height', '200px');
-
-// 	var city = document.createElement('h2');
-// 	city.innerHTML = photographer.city;
-
-// 	var price = document.createElement('p');
-// 	price.innerHTML = photographer.price;
-
-// 	var tagline = document.createElement('p');
-// 	tagline.innerHTML = photographer.tagline;
-	
-// 	container.appendChild(nameOfPhotograph);
-// 	container.appendChild(picture);
-// 	container.appendChild(price);
-// 	container.appendChild(tagline);
-
-// 	return container;
-// }
-
-// async function displayData(photographers) {
-// 	const photographersSection = document.querySelector('.photographer_section');
-
-// 	photographers.forEach((photographer) => {
-// 		const photographerModel = photographerFactory(photographer);
-// 		// const userCardDOM = photographerModel.getUserCardDOM();
-// 		console.log('photographer', photographerModel);
-// 		photographersSection.appendChild(photographerModel);
-// 	});
-// }
-
-// async function init() {
-// 	// Récupère les datas des photographes
-// 	const { photographers } = await getPhotographers();
-// 	displayData(photographers);
-// }
-
-// init();
-
-// fin de la fonction Exemple......................................................
-
-
-
-
-// Fonction de base...............................................................
-
-    // async function photographerFactory(photographer){
-    //     var nameOfPhotograph = document.createElement("h1");
-    //     nameOfPhotograph.innerHTML = photographer.name;  
-    //     nameOfPhotograph.appendChild(photographerModel);
-    //     return nameOfPhotograph;
-    // }
-
-    // async function displayData(photographers) {
-    //     const photographersSection = document.querySelector(".photographer_section");
-
-    //     photographers.forEach((photographer) => {
-    //         const photographerModel = photographerFactory(photographer);
-    //         const userCardDOM = photographerModel.getUserCardDOM();
-    //         photographersSection.appendChild(userCardDOM);
-    //     });      
-    // }
-
-
-    // async function init() {
-        // Récupère les datas des photographes
-//         const { photographers } = await getPhotographers();
-//         displayData(photographers);
-//     };
-    
-//   init();
-
-// Fin fonction de base............................................................

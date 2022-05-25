@@ -43,7 +43,7 @@ textarea:focus-visible{
 // MAIN...............................................
 
 
-// Présentation...........................
+// Présentation
 
 .presentation{
 
@@ -106,7 +106,10 @@ textarea:focus-visible{
 
 }
 
-// Bouton de tri..................................
+
+
+
+// Bouton de tri
 
 
 .tri{
@@ -167,7 +170,10 @@ textarea:focus-visible{
     color: #FAFAFA;
 }
 
-// Galerie photos.................................
+
+
+
+// Galerie photos
 
 #galerie{
     // border: solid 2px fuchsia;
@@ -213,36 +219,10 @@ video{
     width: 26rem;
 }
 
-// #galerie{
-//     border: solid 2px fuchsia;
-//     display: flex;
-//     margin: 3rem 0rem 3rem 0rem;
-//     justify-content: space-around;
-//     flex-wrap: wrap;
-
-//     &__picture{
-//         border: solid 2px red;
-//         width: 33%;
-
-//         &--modeleImg{
-//             object-fit: cover;
-//             height: 18rem;
-//             width: 18rem;
-//         }
-
-//         &--legend{
-//             display: flex;
-//             justify-content: space-around;
-//             font-size: 1rem;
-//             color: $colour-primary;
-//         }
-//     }
-// }
 
 
 
-
-// Encart...................................
+// Encart
 
 .encart{
     background: $colour-secondary;
@@ -265,7 +245,7 @@ video{
 
 
 
-// MODALE.............................................
+// MODALE DE FORMULAIRE.............................................
 
 #contact_modal{
     display: none;
@@ -370,7 +350,7 @@ textarea{
 
 
 
-// Modale Galerie.....................................
+// MODALE GALERIE DE DEFILEMENT.....................................
 
 #modalGalerie{
     display: none;
@@ -442,6 +422,8 @@ textarea{
 }
 
 
+
+
 // RESPONSIVE.........................................
 
 
@@ -476,9 +458,7 @@ textarea{
             margin-right: 0.5rem;
         }
     
-    }
-    
-
+    }    
     
 }
 
@@ -534,8 +514,7 @@ textarea{
     }
 
     .tri{
-
-    
+  
         &__txt{
             font-weight: bold;
         }
