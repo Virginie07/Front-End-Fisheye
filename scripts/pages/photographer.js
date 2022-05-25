@@ -9,7 +9,7 @@ const product_id = urlParams.get("id");
 const product_name = urlParams.get("name").split(' ')[0].replace('-', ' ');
 
 
-// Encadré de présentation......................................................................
+// CADRE DE PRESENTATION......................................................................
 
 
 const namePhotographer = document.getElementsByClassName('presentation__info--name');
@@ -27,20 +27,20 @@ fetch("../../data/photographers.json")
 
   for (let index = 0; index < data.photographers.length; index++) {
         
-      if(product_id == data.photographers[index].id){
+    if(product_id == data.photographers[index].id){
 
-          photographerPrice = data.photographers[index].price;
+      photographerPrice = data.photographers[index].price;
 
-          namePhotographer[0].textContent = data.photographers[index].name;
-          cityPhotographer[0].textContent = data.photographers[index].city +', '+ data.photographers[index].country;
-          taglinePhotographer[0].textContent = data.photographers[index].tagline;        
-          nameModale[0].textContent = data.photographers[index].name; 
+      namePhotographer[0].textContent = data.photographers[index].name;
+      cityPhotographer[0].textContent = data.photographers[index].city +', '+ data.photographers[index].country;
+      taglinePhotographer[0].textContent = data.photographers[index].tagline;        
+      nameModale[0].textContent = data.photographers[index].name; 
           
-          photographerImg.src =  './assets/images/' + data.photographers[index].portrait ;
-          photographerImg.className = ('presentation__photo--img');
-          photographerImg.setAttribute('alt', data.photographers[index].name);
-          portraitPhotographer[0].appendChild(photographerImg);
-      }
+      photographerImg.src =  './assets/images/' + data.photographers[index].portrait ;
+      photographerImg.className = ('presentation__photo--img');
+      photographerImg.setAttribute('alt', data.photographers[index].name);
+      portraitPhotographer[0].appendChild(photographerImg);
+    }
   }
 
   const tarif = document.getElementsByClassName('encart__tarif');
@@ -51,12 +51,13 @@ fetch("../../data/photographers.json")
 
 
 
-// Modale formulaire de contact.........................................................
+// MODALE FORMULAIRE DE CONTACT.........................................................
 
 
 const modal = document.getElementById("contact_modal");
 const closeBtn = document.querySelector(".modal__entete--icone");
 const contactBtn = document.querySelector(".presentation__contact");
+
   
 // sélection du paragraphe "merci"
 const submitBtn = document.querySelector('.modal__formulaire--bouton');
@@ -64,18 +65,22 @@ const txtValid = document.getElementById("success");
     
 contactBtn.addEventListener("click", modalOpen);
 closeBtn.addEventListener("click", modalClose);
-submitBtn.addEventListener("click", validate);   
+submitBtn.addEventListener("click", validate); 
+
+
   
 // Fonction pour ouvrir la modale
 function modalOpen(){
   modal.style.display = "block";
   document.getElementById('prenom').focus();
 }
+
   
 // Fonction pour fermer la modale
 function modalClose(){
   modal.style.display = "none";
 }
+
 
 // Fonction qui fait apparaitre le txt de validation
 function txtValidAppear() {
@@ -132,7 +137,10 @@ function validate(event) {
 }
 
 
-// Galerie principale Photos.......................................................
+
+
+
+// GALERIE PRINCIPALE DES PHOTOS.......................................................
 
 
 // Appel du parent
@@ -148,6 +156,9 @@ fetch("../../data/photographers.json")
   let ensemblePhotos = []; 
   let totalLikes = 0;
   
+
+  // Fonction de tri des photos
+
   function sortData(critere1){
     if (critere1 == 'TriDate'){
       return data.media.sort(compareDateMediaStr);
@@ -160,6 +171,10 @@ fetch("../../data/photographers.json")
     }
     return data.media;
   }
+
+
+
+  // Fonction permettant d'afficher les photos dans la galerie
    
   function affichagePhotos(sortCriteria){
 
@@ -184,12 +199,6 @@ fetch("../../data/photographers.json")
           const galeriePictureModel = document.createElement('div');
           galeriePictureModel.setAttribute('class','galerie__picture--modele');
           galeriePicture.appendChild(galeriePictureModel);
-
-          // const liengaleriePictureModelImg = document.createElement('a');
-          // liengaleriePictureModelImg.setAttribute('class', 'lienImage');
-          // liengaleriePictureModelImg.setAttribute('href', '#');
-          // liengaleriePictureModelImg.setAttribute('', data.media[index].title);
-          // galeriePictureModel.appendChild(liengaleriePictureModelImg);
 
           const galeriePictureModelImg = document.createElement('img');
           galeriePictureModelImg.setAttribute('media','video');
@@ -239,12 +248,6 @@ fetch("../../data/photographers.json")
           const galeriePictureModel = document.createElement('div');
           galeriePictureModel.setAttribute('class','galerie__picture--modele');
           galeriePicture.appendChild(galeriePictureModel);
-
-          // const liengaleriePictureModelImg = document.createElement('a');
-          // liengaleriePictureModelImg.setAttribute('class', 'lienImage');
-          // liengaleriePictureModelImg.setAttribute('href', '#');
-          // liengaleriePictureModelImg.setAttribute('aria-labelledby', data.media[index].title);
-          // galeriePictureModel.appendChild(liengaleriePictureModelImg);
   
           const galeriePictureModelImg = document.createElement('img');
           galeriePictureModelImg.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
@@ -291,8 +294,9 @@ fetch("../../data/photographers.json")
   }
 
   affichagePhotos();
+  
 
-  // Fonctions d'afffichage de tri
+  // Fonctions d'affichage des photos au tri
 
   function affichagePhotoDate(){
     affichagePhotos('TriDate');
@@ -325,7 +329,9 @@ fetch("../../data/photographers.json")
   menuLikes.addEventListener('click',  affichagePhotoLikes);
 
 
-  // Incrémentation des likes.........
+
+
+  // Incrémentation des likes
 
   function incrementationLikes(){
 
@@ -381,7 +387,7 @@ fetch("../../data/photographers.json")
      
     }); 
       
-    // Encart de bas de page..........
+    // Encart de bas de page
   
     const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
     totalChiffre[0].textContent = totalLikes;
@@ -390,7 +396,10 @@ fetch("../../data/photographers.json")
 
   incrementationLikes();
 
-  // Défilement de la galerie......................
+
+
+
+  // Modale de défilement de la galerie
 
   function defilementGalerie(){
    
@@ -552,6 +561,10 @@ fetch("../../data/photographers.json")
 
   defilementGalerie();
 
+
+
+  // Fonction de comparaison nécessaire au tri
+
   function compareLikesMediaStr(m1, m2){
     if (m1.likes < m2.likes)
     return -1;
@@ -579,7 +592,9 @@ fetch("../../data/photographers.json")
 });
 
 
-// // Bouton de tri.................................................
+
+
+// BOUTON DE TRI.................................................
   
 const lienDate = document.getElementsByClassName('menuDate');
 const lienAlpha = document.getElementsByClassName('menuTitre');
@@ -588,18 +603,8 @@ const divTri = document.querySelector(".tri__btn");
 const itemTris = document.querySelectorAll('.tri__btn--menu');
 
 lienTri.addEventListener("click", menuTriOpen);
-
-  // lienTri.addEventListener("click", menuTriClose);
-
-  // const menuTri = document.getElementsByClassName('tri__btn--back');
-  // const divTri = document.querySelector(".tri__btn");
-  // const btnTri = document.querySelector(".btn_tri");
-   
-  // btnTri.addEventListener("mouseenter", menuTriOpen);
-  // divTri.addEventListener("mouseleave", menuTriClose);
  
- 
-// Fonction pour ouvrir le menu de tri...........................
+// Fonction pour ouvrir le menu de tri
 
 function menuTriOpen(){
   lienDate[0].style.display = "block";
@@ -611,12 +616,12 @@ function menuTriClose(){
   lienAlpha[0].style.display = "none";
  }
 
-
  const flecheGauche = document.querySelector('.modalGalerie__fleche--iconeLeft');
  const flecheDroite = document.querySelector('.modalGalerie__fleche--iconeRight');
  
  
  document.body.onkeyup = function(e){
+   
   if(e.keyCode == 32 || e.keyCode == 13){
     document.activeElement.click();
     console.log(document.activeElement);
